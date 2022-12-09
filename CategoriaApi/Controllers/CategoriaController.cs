@@ -1,9 +1,12 @@
 ﻿
 
+using ApiRevenda.Exceptions;
+using ApiRevenda.Services;
 using AutoMapper;
 using CategoriaApi.Data;
 using CategoriaApi.Data.Dto.DtoCategoria;
 using CategoriaApi.Model;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,6 +20,7 @@ namespace CategoriaApi.Controllers
     {
         private DatabaseContext _context;
         private IMapper _mapper;
+        private CategoriaService _service;
 
         public CategoriaController(DatabaseContext context, IMapper mapper)
         {
@@ -28,54 +32,28 @@ namespace CategoriaApi.Controllers
         public IActionResult AdicionarCategoria([FromBody] CreateCategoriaDto categoriaDto)
         {
 
-            Categoria categoriaNome = _context.Categorias.FirstOrDefault(categoriaNome => categoriaNome.Nome.ToUpper() == categoriaDto.Nome.ToUpper());
             try
             {
-                if (categoriaDto.Nome.Length >= 3)
-                {
-                    if (categoriaNome == null)
-                    {
-                        Categoria categoria = _mapper.Map<Categoria>(categoriaDto);
-                        categoria.DataCriacao = DateTime.Now;
-                        categoria.Status = true;
-                        _context.Categorias.Add(categoria);
-                        _context.SaveChanges();
-                        Console.WriteLine(categoria.Nome);
-                        return CreatedAtAction(nameof(GetCategoriaPorId), new { id = categoria.Id }, categoriaDto);
-                    }
-                    return BadRequest("(Atenção)!.\n A categoria já existe!");
-                }
-                return BadRequest("Para criar uma categoria,o campo (Nome) deve conter de 3 a 50 caracteres\n" +
-                    "e o Status deve ser verdadeiro (true)");
+                ReadCategoriaDto readDto = _service.AdicionarCategoria(categoriaDto);
+                return CreatedAtAction(nameof(GetCategoriaPorId), new { id = readDto.Id }, readDto);
+
             }
-            catch (Exception)
+            catch (AlreadyExistsException e)
             {
 
-              return BadRequest("Por favor insira o id do endereco do cliente");
+                return BadRequest(e.Message);
+            }
+            catch (MinCaracterException e)
+            {
+                return BadRequest(e.Message);
             }
         }
 
         [HttpPut("{id}")]
         public IActionResult EditarCategoria(int id, [FromBody] UpdateCategoriaDto categoriaUpdateDto)
         {
-            Categoria categorias = _context.Categorias.FirstOrDefault(categoria => categoria.Id == id);
-           IEnumerable<SubCategoria> subCategorias = _context.SubCategorias.Where(sub=>sub.CategoriaId==id);
-
-            if (categorias == null)
-            {
-                return NotFound();
-            }
-            if (categoriaUpdateDto.Status == false)
-            {
-                foreach (var subCategoria in subCategorias)
-                {
-                    subCategoria.Status = false;
-                }
-            }
-            _mapper.Map(categoriaUpdateDto, categorias);
-            categorias.DataAtualizacao = DateTime.Now;
-            
-            _context.SaveChanges();
+           Result result = _service.EditarCategoria(id, categoriaUpdateDto);
+            if (result.IsFailed) return NotFound();
             return NoContent();
         }
 
@@ -154,7 +132,7 @@ namespace CategoriaApi.Controllers
                 categorias = query.ToList();
             }
             
-            List<ReaderCategoriaDto> readDto = _mapper.Map<List<ReaderCategoriaDto>>(categorias);
+            List<ReadCategoriaDto> readDto = _mapper.Map<List<ReadCategoriaDto>>(categorias);
             return Ok(readDto);
 
         }
@@ -166,7 +144,7 @@ namespace CategoriaApi.Controllers
                 Categoria categoria= _context.Categorias.FirstOrDefault(categoria => categoria.Id == id);
             if (categoria != null)
             {
-                ReaderCategoriaDto reader = _mapper.Map<ReaderCategoriaDto>(categoria);
+                ReadCategoriaDto reader = _mapper.Map<ReadCategoriaDto>(categoria);
                 return Ok(categoria);
 
             }
