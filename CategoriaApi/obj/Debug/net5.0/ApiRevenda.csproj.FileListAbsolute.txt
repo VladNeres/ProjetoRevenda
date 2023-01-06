@@ -9,6 +9,7 @@ C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\FluentResults.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Google.Protobuf.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Humanizer.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\K4os.Compression.LZ4.dll
@@ -21,6 +22,7 @@ C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Microsoft.OpenApi.dll
@@ -28,6 +30,7 @@ C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Ubiety.Dns.Core.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\ZstdNet.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\MySql.EntityFrameworkCore.dll
+C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\ClearTech\Documents\Projeto Revenda\CategoriaApi\CategoriaApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll

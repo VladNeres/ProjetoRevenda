@@ -9,7 +9,12 @@ namespace CategoriaApi.Model
         [Key]
         [Required]
         public int Id { get; set; }
-        [Required(ErrorMessage = "É necessario informar o nome da rua")]
+
+        [Required(ErrorMessage = "O campo Cepo CEP é Obrigatório")]
+        public string CEP { get; set; }
+        public string UF { get; set; }
+        public string Localidade { get; set; }
+        public string Bairro { get; set; }
         public string Lougradouro { get; set; }
         [Required(ErrorMessage = "É necessario informar o numero da casa")]
         public int Numero { get; set; }

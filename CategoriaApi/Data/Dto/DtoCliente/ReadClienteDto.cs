@@ -7,7 +7,5 @@ namespace RevendaApi.Data.Dto.ClienteDto
         public int Id { get; set; }
         public string Nome { get; set; }
         public Endereco Enderecos { get; set; }
-
-
     }
 }
