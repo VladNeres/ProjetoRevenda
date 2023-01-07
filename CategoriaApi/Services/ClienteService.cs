@@ -1,4 +1,5 @@
-﻿using ApiRevenda.Repositorys;
+﻿using ApiRevenda.Interfaces;
+using ApiRevenda.Repositorys;
 using AutoMapper;
 using CategoriaApi.Model;
 using FluentResults;
@@ -10,7 +11,7 @@ namespace ApiRevenda.Services
     {
 
         private IMapper _mapper;
-        private ClienteRepository _repository;
+        private  ClienteRepository _repository;
         public ClienteService( IMapper mapper, ClienteRepository repository)
         {
             _repository = repository;
@@ -19,9 +20,9 @@ namespace ApiRevenda.Services
 
         public ReadClienteDto AdicionarCliente(CreateClienteDto clienteDto)
         {
-            Cliente cliente = _mapper.Map<Cliente>(clienteDto); 
-            ReadClienteDto readDto= _mapper.Map<ReadClienteDto>(cliente);
-            return readDto;
+            Cliente cliente = _mapper.Map<Cliente>(clienteDto);
+            _repository.AdicionarCliente(cliente);
+            return _mapper.Map<ReadClienteDto>(cliente);
         }
 
         public Result AtualizarCliente(int id, UpDateClienteDto clienteDto)

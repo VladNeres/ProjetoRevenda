@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CategoriaApi.Migrations
+namespace ApiRevenda.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230106031951_Incluindo camadas de service e repository")]
-    partial class Incluindocamadasdeserviceerepository
+    [Migration("20230107022856_criando tabelas usuario e endereco")]
+    partial class criandotabelasusuarioeendereco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,7 @@ namespace CategoriaApi.Migrations
                     b.Property<string>("Localidade")
                         .HasColumnType("text");
 
-                    b.Property<string>("Lougradouro")
+                    b.Property<string>("Logradouro")
                         .HasColumnType("text");
 
                     b.Property<int>("Numero")

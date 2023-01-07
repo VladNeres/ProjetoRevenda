@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
 
-namespace CategoriaApi.Migrations
+namespace ApiRevenda.Migrations
 {
-    public partial class Criandotabeladeclienteseenderecoerelacionamentoentreelas : Migration
+    public partial class criandotabelasusuarioeendereco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,11 @@ namespace CategoriaApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Lougradouro = table.Column<string>(type: "text", nullable: false),
+                    CEP = table.Column<string>(type: "text", nullable: false),
+                    UF = table.Column<string>(type: "text", nullable: true),
+                    Localidade = table.Column<string>(type: "text", nullable: true),
+                    Bairro = table.Column<string>(type: "text", nullable: true),
+                    Logradouro = table.Column<string>(type: "text", nullable: true),
                     Numero = table.Column<int>(type: "int", nullable: false),
                     Complemento = table.Column<string>(type: "text", nullable: true)
                 },

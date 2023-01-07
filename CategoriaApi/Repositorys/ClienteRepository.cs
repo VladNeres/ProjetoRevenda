@@ -9,15 +9,15 @@ namespace ApiRevenda.Repositorys
 {
     public class ClienteRepository
     {
-        private DatabaseContext _context;
+        private  DatabaseContext _context;
         public ClienteRepository( DatabaseContext context)
         {
             _context = context;
         }
 
-        public void AdicionarCliente(Cliente clienteDto)
+        public void AdicionarCliente(Cliente cliente)
         {
-            _context.Clientes.Add(clienteDto);
+            _context.Clientes.Add(cliente);
             _context.SaveChanges();
         }
 

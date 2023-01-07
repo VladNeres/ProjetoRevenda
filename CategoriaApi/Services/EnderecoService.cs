@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using ApiRevenda.Repositorys;
+using AutoMapper;
 using CategoriaApi.Data;
 using CategoriaApi.Model;
 using FluentResults;
 using Newtonsoft.Json;
 using RevendaApi.Data.Dto.DtoEndereco;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -13,20 +15,20 @@ namespace ApiRevenda.Services
 {
     public class EnderecoService
     {
-        private DatabaseContext _context;
-        private IMapper _mapper;
+        private EnderecoRepository _repositoy;
+        private  IMapper _mapper;
 
-        public EnderecoService(DatabaseContext context, IMapper mapper)
+        public EnderecoService(EnderecoRepository repository, IMapper mapper)
         {
-            _context = context;
+            _repositoy = repository;
             _mapper = mapper;
+         
         }
 
         public async Task<ReadEnderecoDto> AdicionarEndereco(CreateEnderecoDto enderecoDto)
         {
             Endereco endereco = await InserirResultadoViaCep(enderecoDto);
-            _context.Enderecos.Add(endereco);
-            _context.SaveChanges();
+             _repositoy.AdicionarEndereco(endereco);
             ReadEnderecoDto readEnderecoDto = _mapper.Map<ReadEnderecoDto>(endereco);
             return readEnderecoDto;
         }
@@ -34,7 +36,7 @@ namespace ApiRevenda.Services
 
         public async Task<Result> AtualizarEndereco(int id, UpdateEnderecoDto enderecoDto)
         {
-            var enderecoExiste = _context.Enderecos.FirstOrDefault(endereco => endereco.Id == id);
+            var enderecoExiste = _repositoy.RecuperarEnderecoPorId(id);
             if (enderecoExiste == null)
             {
                 return Result.Fail("Endereço não encontrado");
@@ -42,46 +44,46 @@ namespace ApiRevenda.Services
 
             await InsrindoValoresViaCep(enderecoExiste);
             Endereco endereco = _mapper.Map<Endereco>(enderecoDto);
-            _mapper.Map(enderecoDto, endereco);
-            _context.SaveChanges();
+            _repositoy.AtualizarEndereco(endereco);
             return Result.Ok();
         }
 
         private async Task InsrindoValoresViaCep(Endereco endereco)
         {
             var viaCep = await ViaCep(endereco.CEP);
-            endereco.Lougradouro = viaCep.Lougradouro;
+            endereco.Logradouro = viaCep.Logradouro;
             endereco.UF = viaCep.UF;
             endereco.Localidade = viaCep.Localidade;
             endereco.Bairro = viaCep.Bairro;
+            endereco.CEP = endereco.CEP;
         }
 
-        public object GetEndereco()
+        public IEnumerable<Endereco> GetEndereco()
         {
-            var cliente = _context.Clientes.ToList();
-            return cliente;
+           var enderecos= _repositoy.GetEndereco();
+            return enderecos;
+           
         }
 
-        public Result GetEnderecoPorId(int id)
+        public ReadEnderecoDto  GetEnderecoPorId(int id)
         {
-            Endereco endereco = _context.Enderecos.FirstOrDefault(endereco => endereco.Id == id);
+            Endereco endereco = _repositoy.RecuperarEnderecoPorId(id);
             if (endereco == null)
             {
-                return Result.Fail("Id do endereço não foi encontrado");
+                return null;
             }
                 ReadEnderecoDto enderecoDto = _mapper.Map<ReadEnderecoDto>(endereco);
-                return Result.Ok();
+                return enderecoDto;
         }
 
         internal Result DeletarEnderecoPorId(int id)
         {
-          Endereco enderecoId= _context.Enderecos.FirstOrDefault(endereco => endereco.Id == id);
+            Endereco enderecoId = _repositoy.RecuperarEnderecoPorId(id);
             if(enderecoId == null)
             {
                 return Result.Fail("Endereço não encontrado");
             }
-            _context.Enderecos.Remove(enderecoId);
-            _context.SaveChanges();
+            _repositoy.DeletarEnderecoPorId(enderecoId);
             return Result.Ok();
         }
         public async Task<Endereco> ViaCep(string cep)
@@ -100,7 +102,7 @@ namespace ApiRevenda.Services
         {
             Endereco endereco = _mapper.Map<Endereco>(enderecoDto);
             var viaCep = await ViaCep(endereco.CEP);
-            endereco.Lougradouro = viaCep.Lougradouro;
+            endereco.Logradouro = viaCep.Logradouro;
             endereco.UF = viaCep.UF;
             endereco.Localidade = viaCep.Localidade;
             endereco.Bairro = viaCep.Bairro;

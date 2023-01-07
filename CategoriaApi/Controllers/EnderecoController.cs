@@ -13,14 +13,12 @@ namespace RevendaApi.Controllers
     [Route("[controller]")]
     public class EnderecoController: ControllerBase
     {
-        public DatabaseContext _context;
-        public IMapper _mapper;
+        
         private EnderecoService _enderecoService;
 
-        public EnderecoController(DatabaseContext context, IMapper mapper, EnderecoService service)
+        public EnderecoController( EnderecoService service)
         {
-            _context = context;
-            _mapper = mapper;
+          
             _enderecoService = service;
         }
 
@@ -49,8 +47,8 @@ namespace RevendaApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetEnderecoPorId (int id)
         {
-           Result result = _enderecoService.GetEnderecoPorId(id);
-            if(result==null) return NotFound();
+           ReadEnderecoDto result = _enderecoService.GetEnderecoPorId(id);
+            if(result != null) return Ok(result);
             return NotFound();
         }
 

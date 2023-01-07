@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CategoriaApi.Migrations
+namespace ApiRevenda.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
@@ -55,7 +55,7 @@ namespace CategoriaApi.Migrations
                     b.Property<string>("Localidade")
                         .HasColumnType("text");
 
-                    b.Property<string>("Lougradouro")
+                    b.Property<string>("Logradouro")
                         .HasColumnType("text");
 
                     b.Property<int>("Numero")

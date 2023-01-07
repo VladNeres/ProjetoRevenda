@@ -1,3 +1,4 @@
+using ApiRevenda.Repositorys;
 using ApiRevenda.Services;
 using CategoriaApi.Data;
 using Microsoft.AspNetCore.Builder;
@@ -30,9 +31,11 @@ namespace CategoriaApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<EnderecoService, EnderecoService>();
-            //services.AddScoped<ClienteService, ClienteService>();
             services.AddDbContext<DatabaseContext>(opt => opt.UseLazyLoadingProxies().UseMySQL(Configuration.GetConnectionString("CategoriaConnection")));
+            services.AddScoped<EnderecoService>();
+            services.AddScoped<ClienteService>();
+            services.AddScoped<ClienteRepository>();
+            services.AddScoped<EnderecoRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
