@@ -1,4 +1,5 @@
 ﻿using CategoriaApi.Model;
+using System.Collections.Generic;
 
 namespace ApiRevenda.Interfaces
 {
@@ -7,7 +8,7 @@ namespace ApiRevenda.Interfaces
         public void AdicionarCliente(Cliente cliente);
         public void ExcluirCliente(Cliente cliente);
         public void Salvar();
-        public object PesquisarListaCliente();
+        public List<Cliente> PesquisarListaCliente();
         public Cliente RecuperaClientePorId(int id);
 
 

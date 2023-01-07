@@ -1,4 +1,5 @@
-﻿using ApiRevenda.Services;
+﻿using ApiRevenda.Interfaces;
+using ApiRevenda.Services;
 using AutoMapper;
 using CategoriaApi.Data;
 using CategoriaApi.Model;
@@ -16,9 +17,9 @@ namespace CategoriaApi.Controllers
     public class ClienteController: ControllerBase
     {
        
-        private ClienteService _clienteservice;
+        private IServiceCliente _clienteservice;
 
-        public ClienteController(ClienteService service)
+        public ClienteController(IServiceCliente service)
         {
             _clienteservice = service;
            

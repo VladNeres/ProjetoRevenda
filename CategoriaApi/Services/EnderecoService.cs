@@ -72,6 +72,7 @@ namespace ApiRevenda.Services
             {
                 return null;
             }
+            var mostranome = _repositoy.RecuperarNomeDoCliente(endereco.Id).Nome;
                 ReadEnderecoDto enderecoDto = _mapper.Map<ReadEnderecoDto>(endereco);
                 return enderecoDto;
         }

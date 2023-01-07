@@ -1,3 +1,4 @@
+using ApiRevenda.Interfaces;
 using ApiRevenda.Repositorys;
 using ApiRevenda.Services;
 using CategoriaApi.Data;
@@ -32,9 +33,9 @@ namespace CategoriaApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DatabaseContext>(opt => opt.UseLazyLoadingProxies().UseMySQL(Configuration.GetConnectionString("CategoriaConnection")));
+            services.AddScoped<IServiceCliente,ClienteService>();
+            services.AddScoped<IRepositoryCliente, ClienteRepository>();
             services.AddScoped<EnderecoService>();
-            services.AddScoped<ClienteService>();
-            services.AddScoped<ClienteRepository>();
             services.AddScoped<EnderecoRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>

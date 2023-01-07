@@ -1,18 +1,18 @@
 ﻿using ApiRevenda.Interfaces;
-using ApiRevenda.Repositorys;
 using AutoMapper;
 using CategoriaApi.Model;
 using FluentResults;
 using RevendaApi.Data.Dto.ClienteDto;
+using System.Collections.Generic;
 
 namespace ApiRevenda.Services
 {
-    public class ClienteService
+    public class ClienteService: IServiceCliente
     {
 
         private IMapper _mapper;
-        private  ClienteRepository _repository;
-        public ClienteService( IMapper mapper, ClienteRepository repository)
+        private IRepositoryCliente _repository;
+        public ClienteService( IMapper mapper, IRepositoryCliente repository)
         {
             _repository = repository;
             _mapper = mapper;
@@ -48,10 +48,9 @@ namespace ApiRevenda.Services
             return Result.Ok();
         }
 
-        public object PesquisarListaCliente()
+        public List<Cliente> PesquisarListaCliente()
         {
-            var cliente = _repository.PesquisarListaCliente();
-            return cliente;
+            return _repository.PesquisarListaCliente();
         }
         public ReadClienteDto GetClientePorId(int id)
         {

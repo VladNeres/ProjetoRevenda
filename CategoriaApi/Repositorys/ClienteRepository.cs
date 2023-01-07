@@ -1,13 +1,15 @@
-﻿using AutoMapper;
+﻿using ApiRevenda.Interfaces;
+using AutoMapper;
 using CategoriaApi.Data;
 using CategoriaApi.Model;
 using RevendaApi.Data.Dto.ClienteDto;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ApiRevenda.Repositorys
 {
-    public class ClienteRepository
+    public class ClienteRepository: IRepositoryCliente
     {
         private  DatabaseContext _context;
         public ClienteRepository( DatabaseContext context)
@@ -31,10 +33,12 @@ namespace ApiRevenda.Repositorys
             _context.SaveChanges();
         }
 
-        public object PesquisarListaCliente()
+        public List<Cliente> PesquisarListaCliente()
         {
-            return _context.Clientes.ToList();
+          return  _context.Clientes.ToList();
         }
+
+        
         public Cliente RecuperaClientePorId(int id)
         {
             Cliente clienteId= _context.Clientes.FirstOrDefault(cliente => cliente.Id == id);

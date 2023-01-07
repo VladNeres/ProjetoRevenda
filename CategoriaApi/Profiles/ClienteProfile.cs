@@ -12,6 +12,7 @@ namespace RevendaApi.Profiles
             CreateMap<CreateClienteDto, Cliente>();
             CreateMap<UpDateClienteDto, Cliente>();
             CreateMap<Cliente, ReadClienteDto>();
+                
 
         }
     }

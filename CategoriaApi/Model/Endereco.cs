@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -15,6 +16,12 @@ namespace CategoriaApi.Model
         public string UF { get; set; }
         public string Localidade { get; set; }
         public string Bairro { get; set; }
+
+        internal object Select(Func<object, object> value)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Logradouro { get; set; }
         [Required(ErrorMessage = "É necessario informar o numero da casa")]
         public int Numero { get; set; }
