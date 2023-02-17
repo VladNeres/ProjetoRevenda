@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ClearTech\\Documents\\Projeto Revenda\\CategoriaApi\\CategoriaApi\\ApiRevenda.csproj": {}
+    "C:\\Users\\Vladmir\\Documents\\Pratica e estudos\\ProjetoRevenda\\CategoriaApi\\ApiRevenda.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ClearTech\\Documents\\Projeto Revenda\\CategoriaApi\\CategoriaApi\\ApiRevenda.csproj": {
+    "C:\\Users\\Vladmir\\Documents\\Pratica e estudos\\ProjetoRevenda\\CategoriaApi\\ApiRevenda.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ClearTech\\Documents\\Projeto Revenda\\CategoriaApi\\CategoriaApi\\ApiRevenda.csproj",
+        "projectUniqueName": "C:\\Users\\Vladmir\\Documents\\Pratica e estudos\\ProjetoRevenda\\CategoriaApi\\ApiRevenda.csproj",
         "projectName": "ApiRevenda",
-        "projectPath": "C:\\Users\\ClearTech\\Documents\\Projeto Revenda\\CategoriaApi\\CategoriaApi\\ApiRevenda.csproj",
-        "packagesPath": "C:\\Users\\ClearTech\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ClearTech\\Documents\\Projeto Revenda\\CategoriaApi\\CategoriaApi\\obj\\",
+        "projectPath": "C:\\Users\\Vladmir\\Documents\\Pratica e estudos\\ProjetoRevenda\\CategoriaApi\\ApiRevenda.csproj",
+        "packagesPath": "C:\\Users\\Vladmir\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vladmir\\Documents\\Pratica e estudos\\ProjetoRevenda\\CategoriaApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ClearTech\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vladmir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +85,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -93,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

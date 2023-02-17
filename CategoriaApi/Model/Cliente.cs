@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiRevenda.Model;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -16,5 +18,8 @@ namespace CategoriaApi.Model
         [JsonIgnore]
         public virtual Endereco Endereco { get; set; }
         public int EnderecoId { get; set; }
+
+        [JsonIgnore]
+        public List<Anotacao> Anotcoes { get; set; }
     }
 }
